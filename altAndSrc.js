@@ -1,12 +1,12 @@
 function AltAndSrc() {
     let images = document.querySelectorAll('img');
-    let imageData = [];
+    let arrayImages = [];
     images.forEach((img) => {
-        imageData.push({
+        arrayImages.push({
             image_alt: img.alt,
             image_src: img.src
         });
     });
-    return imageData;
+    return arrayImages;
 }
 console.log(AltAndSrc());
