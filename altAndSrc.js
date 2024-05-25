@@ -1,5 +1,5 @@
 function AltAndSrc() {
-    let images = document.querySelectorAll('img');
+    let images = document.querySelectorAll('body img');
     let arrayImages = [];
     images.forEach((img) => {
         arrayImages.push({
