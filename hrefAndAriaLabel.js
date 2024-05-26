@@ -1,4 +1,5 @@
-const links = document.querySelectorAll('body a');
+const section = document.getElementById('primaryArea');
+var links = section.querySelectorAll('a');
 var arrayLinks = [];
 links.forEach(link => {
     arrayLinks.push({
