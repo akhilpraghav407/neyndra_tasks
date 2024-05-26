@@ -1,4 +1,4 @@
-const section = document.getElementById('primaryArea');
+const section = document.querySelector('section');
 var links = section.querySelectorAll('a');
 var arrayLinks = [];
 links.forEach(link => {
