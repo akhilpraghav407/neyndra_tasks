@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form">
+        <label for="">Enter your link here</label><input type="text" id="input">
+        <button id="submit-btn">Submit</button>
+        <div id="show"></div>
+
+    </form>
+
+
+    <script>
+           form.addEventListener('submit',async function(event){
+            event.preventDefault();
+            //console.log("submitted");
+            let url = document.getElementById('input').value;
+            let screen = document.getElementById('show');
+            //console.log(url);
+            try{
+                const response = await fetch(encodeURIComponent(`${encodeURIComponent(url)}`));
+                const urlText = await  response.text();
+
+                const parse = new DOMParser();
+                const doc = parse.parseFromString(urlText,'text/html');
+
+                const links = doc.querySelectorAll('a');
+                const arrayLinks = [];
+
+                links.forEach((link)=>{
+                    arrayLinks.push({
+                        href: link.getAttribute('href'),
+                        ariaLabel: link.getAttribute('aria-label')
+                    })
+                });
+
+                screen.innerHTML = '<h2>Results</h2>';
+                arrayLinks.forEach((item)=>{
+                    const result = document.createElement('p');
+                    result.innerHTML = `href: ${item.href}, aria-label: ${item.ariaLabel}`;
+                    show.innerHTML = appendChild(result);
+                })
+                
+            }
+            catch(err){
+                show.innerHTML = "<p>please check your url</p>";
+            }
+            
+            
+           });
+        
+    </script>
+</body>
+</html>
